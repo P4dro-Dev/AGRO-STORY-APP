@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Vendas Agrícolas - AgroStoreExpress</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        h1, h2 {
+            color: #28a745;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        form div {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        button[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+            grid-column: span 2;
+            margin-top: 10px;
+        }
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+        #mensagem {
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #e9ecef;
+            color: #495057;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.2s;
+            margin-right: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button.delete {
+            background-color: #dc3545;
+        }
+        button.delete:hover {
+            background-color: #c82333;
+        }
+        /* Estilo para telas menores */
+        @media (max-width: 768px) {
+            form {
+                grid-template-columns: 1fr;
+            }
+            button[type="submit"] {
+                grid-column: span 1;
+            }
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr {
+                border: 1px solid #ccc;
+                margin-bottom: 10px;
+            }
+            td {
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+            td:before {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+            }
+            td:nth-of-type(1):before { content: "ID Venda"; }
+            td:nth-of-type(2):before { content: "ID Produto"; }
+            td:nth-of-type(3):before { content: "Produto"; }
+            td:nth-of-type(4):before { content: "Quantidade"; }
+            td:nth-of-type(5):before { content: "Data Venda"; }
+            td:nth-of-type(6):before { content: "Valor Total"; }
+            td:nth-of-type(7):before { content: "Ações"; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Gerenciar Vendas Agrícolas</h1>
+    <form id="formVenda">
+        <div>
+            <label for="id_produto">ID do Produto:</label>
+            <input type="number" id="id_produto" placeholder="ID do Produto" required />
+            <small>Este ID deve existir na tabela de Produtos.</small>
+        </div>
+        <div>
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" placeholder="Quantidade" required />
+        </div>
+        <div>
+            <label for="data_venda">Data da Venda:</label>
+            <input type="date" id="data_venda" required />
+        </div>
+        <div>
+            <label for="valor_total">Valor Total:</label>
+            <input type="number" id="valor_total" placeholder="Valor Total" step="0.01" required />
+        </div>
+        <button type="submit">Salvar Venda</button>
+    </form>
+    <div id="mensagem"></div>
+    <h2>Lista de Vendas</h2>
+    <table id="tabelaVendas">
+        <thead>
+            <tr>
+                <th>ID Venda</th>
+                <th>ID Produto</th>
+                <th>Nome Produto</th>
+                <th>Quantidade</th>
+                <th>Data Venda</th>
+                <th>Valor Total</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+
+    <script>
+        const formVenda = document.getElementById("formVenda");
+        const tabelaVendas = document.querySelector("#tabelaVendas tbody");
+        const msgDivVenda = document.getElementById("mensagem");
+
+        function mostrarMensagemVenda(texto, sucesso = true) {
+            msgDivVenda.textContent = texto;
+            msgDivVenda.className = sucesso ? "success" : "error";
+            setTimeout(() => msgDivVenda.textContent = "", 3000);
+        }
+
+        async function carregarVendas() {
+            try {
+                const response = await fetch("/api/vendas");
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar vendas do servidor.');
+                }
+                const vendas = await response.json();
+                tabelaVendas.innerHTML = ""; // Limpa a tabela
+
+                if (vendas.length === 0) {
+                    tabelaVendas.innerHTML = '<tr><td colspan="7" style="text-align: center;">Nenhuma venda cadastrada.</td></tr>';
+                    return;
+                }
+
+                vendas.forEach(venda => {
+                    const row = tabelaVendas.insertRow();
+                    row.insertCell().textContent = venda.id_venda;
+                    row.insertCell().textContent = venda.id_produto;
+                    row.insertCell().textContent = venda.nome_produto; // Nome do produto vindo do JOIN
+                    row.insertCell().textContent = venda.quantidade;
+                    row.insertCell().textContent = new Date(venda.data_venda).toLocaleDateString('pt-BR');
+                    row.insertCell().textContent = `R$ ${parseFloat(venda.valor_total).toFixed(2).replace('.', ',')}`;
+
+                    const acoesCell = row.insertCell();
+                    const btnEditar = document.createElement("button");
+                    btnEditar.textContent = "Editar";
+                    btnEditar.onclick = () => editarVenda(venda.id_venda);
+                    acoesCell.appendChild(btnEditar);
+
+                    const btnApagar = document.createElement("button");
+                    btnApagar.textContent = "Apagar";
+                    btnApagar.classList.add("delete");
+                    btnApagar.onclick = () => apagarVenda(venda.id_venda);
+                    acoesCell.appendChild(btnApagar);
+                });
+            } catch (error) {
+                console.error("Erro ao carregar vendas:", error);
+                mostrarMensagemVenda(`Erro ao carregar vendas: ${error.message}`, false);
+            }
+        }
+
+        async function enviarVenda(event) {
+            event.preventDefault();
+
+            const idVenda = formVenda.dataset.editId;
+            const id_produto = parseInt(document.getElementById("id_produto").value);
+            const quantidade = parseInt(document.getElementById("quantidade").value);
+            const data_venda = document.getElementById("data_venda").value;
+            const valor_total = parseFloat(document.getElementById("valor_total").value);
+
+            const vendaData = { id_produto, quantidade, data_venda, valor_total };
+
+            let url = "/api/vendas";
+            let method = "POST";
+
+            if (idVenda) {
+                url = `/api/vendas/${idVenda}`;
+                method = "PUT";
+            }
+
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(vendaData)
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.erro || 'Ocorreu um erro');
+                }
+
+                mostrarMensagemVenda(data.mensagem || `Venda ${idVenda ? 'atualizada' : 'cadastrada'} com sucesso!`, true);
+                formVenda.reset();
+                delete formVenda.dataset.editId;
+                formVenda.querySelector('button[type="submit"]').textContent = "Salvar Venda";
+                carregarVendas();
+            } catch (error) {
+                console.error("Erro ao salvar venda:", error);
+                mostrarMensagemVenda(`Erro ao salvar venda: ${error.message}`, false);
+            }
+        }
+
+        async function editarVenda(id) {
+            try {
+                const response = await fetch(`/api/vendas/${id}`);
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar venda para edição.');
+                }
+                const venda = await response.json();
+
+                document.getElementById("id_produto").value = venda.id_produto;
+                document.getElementById("quantidade").value = venda.quantidade;
+                // Para campos de data, certifique-se de que o formato YYYY-MM-DD seja usado
+                document.getElementById("data_venda").value = venda.data_venda.split('T')[0];
+                document.getElementById("valor_total").value = venda.valor_total;
+
+                formVenda.dataset.editId = venda.id_venda;
+                formVenda.querySelector('button[type="submit"]').textContent = "Atualizar Venda";
+            } catch (error) {
+                console.error("Erro ao editar venda:", error);
+                mostrarMensagemVenda(`Erro ao carregar venda para edição: ${error.message}`, false);
+            }
+        }
+
+        async function apagarVenda(id) {
+            if (confirm("Tem certeza que deseja apagar esta venda?")) {
+                try {
+                    const response = await fetch(`/api/vendas/${id}`, {
+                        method: "DELETE"
+                    });
+                    const data = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(data.erro || 'Ocorreu um erro ao apagar');
+                    }
+
+                    mostrarMensagemVenda(data.mensagem || "Venda apagada com sucesso!", true);
+                    carregarVendas();
+                } catch (error) {
+                    console.error("Erro ao apagar venda:", error);
+                    mostrarMensagemVenda(`Erro ao apagar venda: ${error.message}`, false);
+                }
+            }
+        }
+
+        formVenda.addEventListener("submit", enviarVenda);
+        document.addEventListener("DOMContentLoaded", carregarVendas);
+    </script>
+</body>
+</html>
