@@ -71,7 +71,7 @@ O banco de dados `agro_store_express` utiliza duas tabelas para armazenar os dad
 | `data_venda`  | `DATE`          | Data da venda                            |
 | `valor_total` | `DECIMAL(10,2)` | Valor total da venda                     |
 
-## API - Endpoints da Aplicação
+## 💾API - Endpoints da Aplicação
 
 O backend expõe os seguintes endpoints RESTful para interagir com o banco de dados:
 
