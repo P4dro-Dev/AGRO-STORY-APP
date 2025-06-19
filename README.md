@@ -2,7 +2,7 @@
 
 Este projeto é um sistema CRUD (Create, Read, Update, Delete) simples, desenvolvido para o gerenciamento de produtos e vendas em uma loja de produtos agrícolas. Ele é dividido em um frontend interativo e um backend robusto, com toda a persistência de dados gerenciada por um banco de dados MySQL.
 
-## 📝|Descrição Geral
+## 📝| Descrição Geral
 
 O objetivo principal desta atividade prática é construir uma aplicação web que permita:
 * **Gerenciar Produtos Agrícolas:** Cadastrar novos produtos, listar os produtos existentes, visualizar detalhes de um produto específico, atualizar informações de produtos e remover produtos.
