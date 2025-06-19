@@ -1,4 +1,4 @@
-# 🌱|Sistema de Gerenciamento para Loja de Produtos Agrícolas (AgroStoreExpress)
+# 🌱| Sistema de Gerenciamento para Loja de Produtos Agrícolas (AgroStoreExpress)
 
 Este projeto é um sistema CRUD (Create, Read, Update, Delete) simples, desenvolvido para o gerenciamento de produtos e vendas em uma loja de produtos agrícolas. Ele é dividido em um frontend interativo e um backend robusto, com toda a persistência de dados gerenciada por um banco de dados MySQL.
 
