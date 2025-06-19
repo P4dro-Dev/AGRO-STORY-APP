@@ -82,7 +82,7 @@ O backend expõe os seguintes endpoints RESTful para interagir com o banco de da
 * `PUT /api/products/:id`: Atualiza um produto existente pelo ID.
 * `DELETE /api/products/:id`: Remove um produto pelo ID.
 
-### Para Vendas
+### 🍉Para Vendas
 * `GET /api/sales`: Lista todas as vendas (inclui o nome do produto via JOIN).
 * `POST /api/sales`: Cadastra uma nova venda.
 * `GET /api/sales/:id`: Busca uma venda específica pelo ID.
