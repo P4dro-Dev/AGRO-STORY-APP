@@ -19,7 +19,7 @@ As seguintes funcionalidades essenciais foram desenvolvidas:
 3.  **Edição de Produtos:** Atualização das informações de um produto existente.
 4.  **Remoção de Produtos:** Exclusão de produtos da base de dados.
 
-### Para Vendas
+### 🛒Para Vendas
 1.  **Cadastro de Vendas:** Registro de novas vendas, incluindo o ID do produto, quantidade, data da venda e valor total.
 2.  **Listagem de Vendas:** Exibição de todas as vendas registradas, mostrando também o nome do produto vendido.
 3.  **Edição de Vendas:** Atualização dos detalhes de uma venda existente.
