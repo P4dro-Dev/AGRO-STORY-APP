@@ -89,6 +89,4 @@ O backend expõe os seguintes endpoints RESTful para interagir com o banco de da
 * `PUT /api/sales/:id`: Atualiza uma venda existente pelo ID.
 * `DELETE /api/sales/:id`: Remove uma venda pelo ID.
 
-## Estrutura do Projeto
 
-A estrutura de pastas do projeto foi organizada para manter o código limpo e modularizado:
