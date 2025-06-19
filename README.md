@@ -9,7 +9,7 @@ O objetivo principal desta atividade prática é construir uma aplicação web q
 * **Gerenciar Vendas:** Registrar novas vendas (associadas a produtos existentes), listar todas as vendas, visualizar detalhes de uma venda e remover registros de vendas.
 * **Persistência de Dados:** Todas as operações são salvas e recuperadas de um banco de dados MySQL.
 
-## 💻Funcionalidades Implementadas
+## 💻 Funcionalidades Implementadas
 
 As seguintes funcionalidades essenciais foram desenvolvidas:
 
