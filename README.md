@@ -43,7 +43,7 @@ As seguintes funcionalidades essenciais foram desenvolvidas:
     * `body-parser`: (Integrado no Express.js 4.16.0+ via `express.json()`). Utilizado para analisar o corpo das requisições HTTP em formato JSON.
     * `nodemon`: Ferramenta para reiniciar automaticamente o servidor Node.js durante o desenvolvimento.
 
-### 🎲|Banco de Dados
+### 🎲| Banco de Dados
 * **SGBD:** MySQL
 * **Ferramentas Sugeridas (para gerenciamento):** MySQL Workbench, DBeaver, phpMyAdmin, etc.
 
