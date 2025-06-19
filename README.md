@@ -32,7 +32,7 @@ As seguintes funcionalidades essenciais foram desenvolvidas:
 * **Tecnologias Base:** HTML5, CSS3
 * A comunicação com o backend é feita utilizando a API `fetch` nativa do navegador, sem a necessidade de bibliotecas adicionais como Axios, mantendo a simplicidade.
 
-### Backend
+### 🤖Backend
 * **Linguagem:** JavaScript
 * **Plataforma:** Node.js
 * **Framework:** Express.js
