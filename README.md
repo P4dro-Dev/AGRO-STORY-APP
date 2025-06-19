@@ -13,7 +13,7 @@ O objetivo principal desta atividade prática é construir uma aplicação web q
 
 As seguintes funcionalidades essenciais foram desenvolvidas:
 
-### 🚜|Para Produtos Agrícolas
+### 🚜| Para Produtos Agrícolas
 1.  **Cadastro de Produtos:** Adição de novos produtos (nome, categoria, preço, estoque).
 2.  **Listagem de Produtos:** Visualização de todos os produtos cadastrados em uma tabela.
 3.  **Edição de Produtos:** Atualização das informações de um produto existente.
