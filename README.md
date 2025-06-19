@@ -25,7 +25,7 @@ As seguintes funcionalidades essenciais foram desenvolvidas:
 3.  **Edição de Vendas:** Atualização dos detalhes de uma venda existente.
 4.  **Remoção de Vendas:** Exclusão de registros de vendas.
 
-## Tecnologias Utilizadas
+## 🖥️Tecnologias Utilizadas
 
 ### Frontend
 * **Linguagem:** JavaScript
