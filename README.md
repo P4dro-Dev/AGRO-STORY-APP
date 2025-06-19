@@ -75,7 +75,7 @@ O banco de dados `agro_store_express` utiliza duas tabelas para armazenar os dad
 
 O backend expõe os seguintes endpoints RESTful para interagir com o banco de dados:
 
-### 🛒|Para Produtos
+### 🛒| Para Produtos
 * `GET /api/products`: Lista todos os produtos agrícolas.
 * `POST /api/products`: Cadastra um novo produto.
 * `GET /api/products/:id`: Busca um produto específico pelo ID.
